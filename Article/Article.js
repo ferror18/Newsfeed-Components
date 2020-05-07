@@ -87,8 +87,8 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   },
   {
-    title: 'Online Dating Ipsum',
-    date: 'At any point in time since online dating tbh',
+    title: 'Online Dating be like...',
+    date: 'Any point in Online dating history',
     firstParagraph: `Fitness outdoor activities road trips outdoor activities. Trying different restaurants Family Guy my phone, my friends, the internet the simple things in life Doctor Who, Kurosawa my favorite word is food my cats passionate about. No drama joking around grab coffee or a drink grab coffee or a drink quizzo Oxford comma.
 
     Kurosawa optimistic my beard sushi. Ethiopian Portlandia recently moved back video games mountain biking, Ethiopian joking around joking around my dogs my friends tell me they don't get why I'm single. Going to the gym skiing foreign films seeing as many countries as possible joking around Myers-Briggs.` ,
@@ -102,7 +102,8 @@ const data = [
     Looking for a third my beard if you have an innie belly button if you dress up like a pin-up doll for me. I'm too honest organized chaos on my fetish list when I get drunk you should be clean and intelligent, don't waste my time Libertarian I don't really keep a budget if you like my profile work hard play hard. Crossfit you will love it skydiving heyyy it's very hard to meet quality women I'm a nice guy.`
   }
 ];
-
+const open = '\u25bc';
+const close = '\u25b2';
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
 
   <div class="article">
@@ -135,18 +136,29 @@ const data = [
     let h2 = document.createElement('h2');
     let p = document.createElement('p');
     let span = document.createElement('span');
+    let linebreak = document.createElement('br');
     // add the data
     h2.textContent = title;
-    p.textContent = `${date}\n\n${firstParagraph}\n${secondParagraph}\n${thirdParagraph}\n`;
+    p.innerHTML = `${date}<br><br><br>${firstParagraph} <br><br> ${secondParagraph} <br><br> ${thirdParagraph}`;
+    span.textContent = open;
     // nesting
-    div.appendChild(h2, p, span);
+    const arr = [span, h2 , p];
+    arr.forEach(element => {
+      div.appendChild(element);
+    });;
     // add necesary classes
     div.classList.add('article');
     p.classList.add('date');
     span.classList.add('expandButton');
     // Event listeners
-    span.addEventListener('click', event => {event.target.classList.toggle('article-open')});
-    debugger
+    span.addEventListener('click', event => {
+      div.classList.toggle('article-open');
+      if (span.textContent === open) {
+        span.textContent = close;
+      }else{
+        span.textContent = open;
+      };
+    });
     //return 'Remember to return the outer most element'
     return div;
   }
