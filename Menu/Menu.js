@@ -1,5 +1,4 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
-
 let menuItems = [
   'Students',
   'Faculty',
@@ -47,9 +46,15 @@ function menuMaker(menuItemsArray) {
   // classes
   menu.classList.add('menu');
   //event listeners
-  menuButton.addEventListener('click', event => {menu.classList.toggle('menu--open')})
+  $('.menu-button').click(function (event){$('.menu').animate({width: 'toggle'}, 600);}) 
+  // $('body').click(function ok(event){$('.menu').animate({width: '0'}, 600);});
+  // $('body').off( "click", ".menu-bottom", ok );
+  // menuButton.addEventListener('click', event => {menu.classList.toggle('menu--open')})
   //return outer-most element in the component
   return menu
 }
 // menuMaker(menuItems);
 document.querySelector('.header').appendChild(menuMaker(menuItems));
+
+// Menu Animations
+// $( "#clickme" ).click(function() {$( "#book" ).animate({opacity: 0.25,left: "+=50",height: "toggle"}, 5000, function() {});});

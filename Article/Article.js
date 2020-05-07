@@ -137,12 +137,14 @@ const close = '\u25b2';
     let p = document.createElement('p');
     let span = document.createElement('span');
     let linebreak = document.createElement('br');
+    let deleteArticle = document.createElement('button');
     // add the data
     h2.textContent = title;
     p.innerHTML = `${date}<br><br><br>${firstParagraph} <br><br> ${secondParagraph} <br><br> ${thirdParagraph}`;
     span.textContent = open;
+    deleteArticle.textContent = 'Delete Article'
     // nesting
-    const arr = [span, h2 , p];
+    const arr = [span, h2 , p, deleteArticle];
     arr.forEach(element => {
       div.appendChild(element);
     });;
@@ -150,7 +152,9 @@ const close = '\u25b2';
     div.classList.add('article');
     p.classList.add('date');
     span.classList.add('expandButton');
+    deleteArticle.classList.add('delete');
     // Event listeners
+    deleteArticle.addEventListener('click', event => {event.target.parentElement.style.display = 'none'});
     span.addEventListener('click', event => {
       div.classList.toggle('article-open');
       if (span.textContent === open) {

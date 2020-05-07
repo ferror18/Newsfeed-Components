@@ -75,8 +75,16 @@
   transform: translate(-50%);
   background-color: white;
 }
+.article .delete {
+  background-color: lightcoral;
+  color: white;
+  border: solid 1px lightgrey;
+  margin: 10px auto 0 auto;
+  display: block;
+  padding: 0.5rem;
+}
 .article-open {
-  height: 400px;
+  height: 600px;
 }
 .menu-button {
   position: absolute;
@@ -85,6 +93,7 @@
 }
 .menu {
   display: none;
+  overflow: hidden;
   position: fixed;
   top: 75px;
   left: 0;
