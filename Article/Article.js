@@ -85,6 +85,21 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Online Dating Ipsum',
+    date: 'At any point in time since online dating tbh',
+    firstParagraph: `Fitness outdoor activities road trips outdoor activities. Trying different restaurants Family Guy my phone, my friends, the internet the simple things in life Doctor Who, Kurosawa my favorite word is food my cats passionate about. No drama joking around grab coffee or a drink grab coffee or a drink quizzo Oxford comma.
+
+    Kurosawa optimistic my beard sushi. Ethiopian Portlandia recently moved back video games mountain biking, Ethiopian joking around joking around my dogs my friends tell me they don't get why I'm single. Going to the gym skiing foreign films seeing as many countries as possible joking around Myers-Briggs.` ,
+
+    secondParagraph: `Coffee my friends tell me they don't get why I'm single down to earth family is very important to me. Self-deprecating humor Vampire Weekend new friends I'm really good at amazing women I've met, happy hour Family Guy outdoor activities going to the gym I'm a big fan of. Pickles honest and direct Family Guy my goofy smile my phone, my friends, the internet On The Road.
+
+    Neutral Milk Hotel working on my body and my mind foreign films discussing politics. I'm a big fan of hiking what to order off of the menu knowing the difference between their/there/they're you should message me, Werner Herzog I have a crush on I hate lists I enjoy outdoorsy. Everything but country music I'm really good at training for the marathon thinking about trying yoga if you're still reading this going to the gym.`,
+
+    thirdParagraph: `Is probably a conspiracy dive bars I won't bite without permission is pretty awesome. It's very hard to meet quality women everything destructive that I do my last partner told me laughing hysterically if that paragraph above turned you off, really only soft drugs that's what she said for real though on the first date it depends on the night. If you have a BMI under 25 work hard play hard my lizard tongue P90X I'm a nice guy I'm a nice guy.
+
+    Looking for a third my beard if you have an innie belly button if you dress up like a pin-up doll for me. I'm too honest organized chaos on my fetish list when I get drunk you should be clean and intelligent, don't waste my time Libertarian I don't really keep a budget if you like my profile work hard play hard. Crossfit you will love it skydiving heyyy it's very hard to meet quality women I'm a nice guy.`
   }
 ];
 
@@ -111,3 +126,30 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+  function articleMaker(articleData) {
+    // pass data into constant
+    const {title, date, firstParagraph, secondParagraph, thirdParagraph} = articleData;
+    // declare html 
+    let div = document.createElement('div');
+    let h2 = document.createElement('h2');
+    let p = document.createElement('p');
+    let span = document.createElement('span');
+    // add the data
+    h2.textContent = title;
+    p.textContent = `${date}\n\n${firstParagraph}\n${secondParagraph}\n${thirdParagraph}\n`;
+    // nesting
+    div.appendChild(h2, p, span);
+    // add necesary classes
+    div.classList.add('article');
+    p.classList.add('date');
+    span.classList.add('expandButton');
+    // Event listeners
+    span.addEventListener('click', event => {event.target.classList.toggle('article-open')});
+    debugger
+    //return 'Remember to return the outer most element'
+    return div;
+  }
+  data.forEach(element => {
+    document.querySelector('.articles').appendChild(articleMaker(element));
+  });
